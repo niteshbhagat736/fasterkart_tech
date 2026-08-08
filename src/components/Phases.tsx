@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { Info } from 'lucide-react';
 import styles from './Phases.module.css';
 
 const phases = [
@@ -17,7 +18,7 @@ const phases = [
       'Sending a detailed proposal and project quotation',
       'Agreement on feature list, budget, and timelines',
     ],
-    note: '📌 Client Deliverable: Project Proposal Document',
+    note: 'Client Deliverable: Project Proposal Document',
   },
   {
     number: '02',
@@ -32,7 +33,7 @@ const phases = [
       'Database and system architecture planning',
       'Client review and design approval before coding begins',
     ],
-    note: '📌 Client Deliverable: Design Mockups + System Flowchart',
+    note: 'Client Deliverable: Design Mockups + System Flowchart',
   },
   {
     number: '03',
@@ -47,7 +48,7 @@ const phases = [
       'AI feature integration (if required)',
       'Weekly milestone reviews with the client',
     ],
-    note: '📌 Duration based on complexity. Weekly client check-ins.',
+    note: 'Duration based on complexity. Weekly client check-ins.',
   },
   {
     number: '04',
@@ -62,7 +63,7 @@ const phases = [
       'Production deployment and go-live',
       'Final walkthrough and client sign-off',
     ],
-    note: '📌 Client Deliverable: Live Product + Handover Documentation',
+    note: 'Client Deliverable: Live Product + Handover Documentation',
   },
 ];
 
@@ -130,7 +131,10 @@ export default function Phases() {
                       </li>
                     ))}
                   </ul>
-                  <div className={styles.note}>{phase.note}</div>
+                  <div className={styles.note}>
+                    <Info size={14} className={styles.noteIcon} />
+                    {phase.note}
+                  </div>
                 </div>
               </div>
             );

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Zap } from 'lucide-react';
 import styles from './Footer.module.css';
 
 const footerLinks = {
@@ -36,7 +37,8 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <div className={styles.logo}>
-              ⚡ FasterKart<span className={styles.logoAccent}>Tech</span>
+              <Zap size={20} className={styles.logoIcon} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }} />
+              FasterKart<span className={styles.logoAccent}>Tech</span>
             </div>
             <p className={styles.tagline}>
               We build digital products that transform businesses — websites, mobile apps,
