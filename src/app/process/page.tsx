@@ -1,31 +1,23 @@
-'use client';
-
-import { useEffect } from 'react';
+import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Phases from '@/components/Phases';
 import Footer from '@/components/Footer';
 
+export const metadata: Metadata = {
+  title: 'Our Process | How We Build Software | FasterKart Tech',
+  description: 'Discover FasterKart Tech\'s structured software development lifecycle. From discovery and design to development, testing, deployment, and ongoing optimization.',
+  alternates: {
+    canonical: '/process',
+  },
+  openGraph: {
+    title: 'Our Development Process | FasterKart Tech',
+    description: 'Learn how we build scalable software, web apps, and mobile applications using agile methodologies and modern technology stacks.',
+    url: '/process',
+    type: 'website',
+  },
+};
+
 export default function ProcessPage() {
-  // Global scroll reveal observer for this page
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-    );
-
-    // Observe all elements with reveal classes
-    const targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    targets.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <>
       <Navbar />

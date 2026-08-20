@@ -9,6 +9,7 @@ import { Zap } from 'lucide-react';
 const navLinks = [
   { label: 'Services', href: '/#services' },
   { label: 'Process', href: '/process' },
+  { label: 'Portfolio', href: '/portfolio' },
   { label: 'Industries', href: '/#industries' },
   { label: 'Stack', href: '/#stack' },
   { label: 'About', href: '/#stats' },

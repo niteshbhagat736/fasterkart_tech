@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Rocket, Handshake, Globe, Star, Target, RefreshCw, Zap, ShieldCheck, MessageCircle, Smartphone } from 'lucide-react';
+import { Rocket, Handshake, Star, Target, RefreshCw, Zap, ShieldCheck, MessageCircle, Smartphone } from 'lucide-react';
 import styles from './Stats.module.css';
 
 const stats = [
-  { value: 200, suffix: '+', label: 'Projects Delivered', icon: <Rocket size={24} />, desc: 'Across web, mobile & software' },
-  { value: 50, suffix: '+', label: 'Happy Clients', icon: <Handshake size={24} />, desc: 'Businesses transformed globally' },
-  { value: 4, suffix: '', label: 'Countries Served', icon: <Globe size={24} />, desc: 'India, UAE, UK, USA' },
-  { value: 5, suffix: '+', label: 'Years Experience', icon: <Star size={24} />, desc: 'Building digital products' },
+  { value: 100, suffix: '+', label: 'Projects Delivered', icon: <Rocket size={24} />, desc: 'Across web, mobile & software' },
+  { value: 80, suffix: '+', label: 'Happy Clients', icon: <Handshake size={24} />, desc: 'Businesses transformed globally' },
+  { value: 2, suffix: '+', label: 'Years Experience', icon: <Star size={24} />, desc: 'Building digital products' },
 ];
 
 function AnimatedCounter({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {
@@ -75,7 +74,7 @@ export default function Stats() {
           <span className="section-label">By The Numbers</span>
           <h2 className="section-title">
             Proven Results,{' '}
-            <span className="gradient-text">Real Impact</span>
+            <span className="gradient-text">Real Benchmark</span>
           </h2>
         </div>
 

@@ -1,9 +1,51 @@
 'use client';
 
-import { Mail, MessageCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, MessageCircle, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { sendContactEmail } from '@/app/actions';
 import styles from './CTA.module.css';
 
 export default function CTA() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus('error');
+      setErrorMessage('Please fill out all fields.');
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const data = new FormData();
+      data.append('name', formData.name);
+      data.append('email', formData.email);
+      data.append('message', formData.message);
+
+      const res = await sendContactEmail(data);
+      if (res.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+        setErrorMessage(res.error || 'Failed to send email. Please try again.');
+      }
+    } catch (err: any) {
+      setStatus('error');
+      setErrorMessage(err.message || 'An unexpected error occurred.');
+    }
+  };
+
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.bgGrad} />
@@ -23,23 +65,103 @@ export default function CTA() {
             and get to work — with you at every step.
           </p>
 
-          <div className={styles.actions}>
-            <a
-              href="mailto:hello@fasterkarttech.com"
-              className={styles.primaryBtn}
-              id="cta-email-btn"
-            >
-              <Mail size={18} /> Send Us an Email
-            </a>
-            <a
-              href="https://wa.me/911234567890"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.whatsappBtn}
-              id="cta-whatsapp-btn"
-            >
-              <MessageCircle size={18} /> Chat on WhatsApp
-            </a>
+          <div className={styles.formContainer}>
+            {status === 'success' ? (
+              <div className={styles.successBox}>
+                <CheckCircle2 size={48} className={styles.successIcon} />
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for reaching out. We will get back to you within 24 hours.</p>
+                <button 
+                  onClick={() => setStatus('idle')}
+                  className={styles.secondaryBtn}
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className={styles.form}>
+                {status === 'error' && (
+                  <div className={styles.errorBox}>
+                    <AlertCircle size={20} className={styles.errorIcon} />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+                
+                <div className={styles.formGrid}>
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="name" className={styles.label}>Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your Name"
+                      required
+                      className={styles.input}
+                    />
+                  </div>
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="email" className={styles.label}>Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="you@example.com"
+                      required
+                      className={styles.input}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.inputGroup}>
+                  <label htmlFor="message" className={styles.label}>Project details</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us about your project, timeline, budget or requirements..."
+                    required
+                    className={styles.textarea}
+                  />
+                </div>
+
+                <div className={styles.actions}>
+                  <button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    className={styles.submitBtn}
+                    id="cta-submit-btn"
+                  >
+                    {status === 'loading' ? (
+                      <>
+                        <Loader2 size={18} className={styles.spinner} /> Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} /> Send Message
+                      </>
+                    )}
+                  </button>
+
+                  <a
+                    href="https://wa.me/919678330237"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.whatsappBtn}
+                    id="cta-whatsapp-btn"
+                    title="Chat on WhatsApp"
+                    aria-label="Chat on WhatsApp"
+                  >
+                    <MessageCircle size={22} />
+                  </a>
+                </div>
+              </form>
+            )}
           </div>
 
           <div className={styles.features}>

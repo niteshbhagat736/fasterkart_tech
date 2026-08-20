@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://fasterkart.tech'),
   title: "FasterKart Tech | Digital Transformation & Software Development Agency",
   description:
     "We build modern websites, mobile apps, AI solutions, and enterprise software that transform businesses and accelerate digital growth.",
@@ -11,6 +14,8 @@ export const metadata: Metadata = {
     title: "FasterKart Tech | Digital Transformation Agency",
     description:
       "We build modern websites, mobile apps, AI solutions & enterprise software.",
+    url: "/",
+    siteName: "FasterKart Tech",
     type: "website",
   },
 };
@@ -21,8 +26,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: '#6366f1',
+          colorBackground: '#0f172a',
+        },
+      }}
+    >
+      <html lang="en">
+        <body>
+          <ScrollReveal />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

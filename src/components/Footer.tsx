@@ -22,9 +22,9 @@ const footerLinks = {
     { name: 'Blog', href: '#' }
   ],
   Contact: [
-    { name: 'hello@fasterkarttech.com', href: 'mailto:hello@fasterkarttech.com' },
-    { name: '+91 98765 43210', href: 'tel:+919876543210' },
-    { name: 'Surat, Gujarat, India', href: '#' },
+    { name: 'tech@fasterkart.com', href: 'mailto:tech@fasterkart.com' },
+    { name: '+91 96783 30237', href: 'tel:+919678330237' },
+    { name: 'Lokhara Chariali, NH 27, Lokhra Rd, Lokhra, Guwahati, Assam 781040', href: '#' },
     { name: 'Mon–Sat, 9am–7pm', href: '#' }
   ],
 };
