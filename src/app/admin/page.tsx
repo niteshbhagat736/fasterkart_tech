@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { UserButton, useUser } from '@clerk/nextjs';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   FolderGit2,
   Users,
@@ -342,7 +343,13 @@ export default function AdminDashboard() {
             <div className={styles.headerInner}>
               <div className={styles.brand}>
                 <Link href="/" className={styles.logo}>
-                  <Layers size={22} color="#6366f1" />
+                  <Image
+                    src="/logo.png"
+                    alt="FasterKart Logo"
+                    width={28}
+                    height={28}
+                    style={{ borderRadius: '6px', objectFit: 'contain' }}
+                  />
                   FasterKart<span>Admin</span>
                 </Link>
               </div>
@@ -422,7 +429,13 @@ export default function AdminDashboard() {
           <div className={styles.headerInner}>
             <div className={styles.brand}>
               <Link href="/" className={styles.logo}>
-                <Layers size={22} color="#6366f1" />
+                <Image
+                  src="/logo.png"
+                  alt="FasterKart Logo"
+                  width={28}
+                  height={28}
+                  style={{ borderRadius: '6px', objectFit: 'contain' }}
+                />
                 FasterKart<span>Admin</span>
               </Link>
               <span className={`${styles.roleBadge} ${userRole === 'admin' ? styles.roleAdmin : styles.roleSubAdmin}`}>

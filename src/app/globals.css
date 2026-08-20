@@ -183,3 +183,42 @@ img {
   background: var(--color-primary);
   border-radius: 3px;
 }
+
+/* ─── Clerk UI Dark Theme High-Contrast Overrides ─────── */
+.cl-userButtonPopoverCard {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+  color: #ffffff !important;
+}
+
+.cl-userPreviewMainIdentifier {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.cl-userPreviewSecondaryIdentifier {
+  color: #94a3b8 !important;
+  font-size: 13px !important;
+}
+
+.cl-userButtonPopoverActionButtonText,
+.cl-userButtonPopoverCustomItemButton {
+  color: #e2e8f0 !important;
+  font-size: 14px !important;
+}
+
+.cl-userButtonPopoverActionButtonText:hover {
+  color: #ffffff !important;
+}
+
+.cl-userButtonPopoverActionButtonIcon,
+.cl-userButtonPopoverActionButtonIconBox {
+  color: #818cf8 !important;
+}
+
+.cl-userButtonPopoverFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+

@@ -1,6 +1,7 @@
 import { SignIn } from '@clerk/nextjs';
 import Link from 'next/link';
-import { ArrowLeft, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft } from 'lucide-react';
 
 export default function SignInPage() {
   return (
@@ -46,17 +47,24 @@ export default function SignInPage() {
         <div style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: '8px',
-          padding: '6px 14px',
+          gap: '10px',
+          padding: '6px 16px',
           borderRadius: '100px',
           background: 'rgba(99, 102, 241, 0.1)',
           border: '1px solid rgba(99, 102, 241, 0.3)',
           color: '#818cf8',
-          fontSize: '13px',
+          fontSize: '14px',
           fontWeight: 600,
-          marginBottom: '12px',
+          marginBottom: '14px',
         }}>
-          <ShieldCheck size={16} /> FasterKart Tech Portal
+          <Image
+            src="/logo.png"
+            alt="FasterKart Logo"
+            width={22}
+            height={22}
+            style={{ borderRadius: '4px', objectFit: 'contain' }}
+          />
+          FasterKart Tech Portal
         </div>
         <h1 style={{
           fontSize: '28px',

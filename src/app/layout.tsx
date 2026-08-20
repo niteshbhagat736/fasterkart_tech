@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import "./globals.css";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -10,6 +11,11 @@ export const metadata: Metadata = {
     "We build modern websites, mobile apps, AI solutions, and enterprise software that transform businesses and accelerate digital growth.",
   keywords:
     "software development, web development, mobile app development, AI solutions, digital transformation, Next.js, React, MERN stack",
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     title: "FasterKart Tech | Digital Transformation Agency",
     description:
@@ -26,14 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      appearance={{
-        variables: {
-          colorPrimary: '#6366f1',
-          colorBackground: '#0f172a',
-        },
-      }}
-    >
+    <ClerkProvider appearance={dark}>
       <html lang="en">
         <body>
           <ScrollReveal />

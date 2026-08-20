@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 
 import Link from 'next/link';
-import { Zap } from 'lucide-react';
+import Image from 'next/image';
 
 const navLinks = [
   { label: 'Services', href: '/#services' },
@@ -29,7 +29,14 @@ export default function Navbar() {
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.logo}>
-          <Zap size={20} className={styles.logoIcon} />
+          <Image
+            src="/logo.png"
+            alt="FasterKart Tech Logo"
+            width={32}
+            height={32}
+            style={{ borderRadius: '8px', objectFit: 'contain' }}
+            priority
+          />
           FasterKart<span className={styles.logoAccent}>Tech</span>
         </Link>
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Zap } from 'lucide-react';
+import Image from 'next/image';
 import styles from './Footer.module.css';
 
 const footerLinks = {
@@ -36,8 +36,14 @@ export default function Footer() {
       <div className="container">
         <div className={styles.top}>
           <div className={styles.brand}>
-            <div className={styles.logo}>
-              <Zap size={20} className={styles.logoIcon} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }} />
+            <div className={styles.logo} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Image
+                src="/logo.png"
+                alt="FasterKart Tech Logo"
+                width={30}
+                height={30}
+                style={{ borderRadius: '8px', objectFit: 'contain' }}
+              />
               FasterKart<span className={styles.logoAccent}>Tech</span>
             </div>
             <p className={styles.tagline}>
